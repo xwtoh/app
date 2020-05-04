@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMU Pathfinders - Values Card Sort</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<script>
+    
+    
+function search(){
+document.getElementById('searchfunction').style.transform = "translateY(0)";       
+document.getElementById('searchfunction').style.transition = "all 0.5s ease";    document.getElementById('searchbutton').style.transform = "translateX(calc(100vw))";       
+document.getElementById('searchbutton').style.transition = "all 1s ease"; 
+    document.getElementById('searchwarning').style.transform = "translateY(0)"; 
+document.getElementById('searchwarning').style.transition = "all 0.5s ease";    
+
+};    
+function searchclose(){
+document.getElementById('searchfunction').style.transform = "translateX(calc(100vw))";     
+document.getElementById('searchfunction').style.transition = "all 1s ease";    document.getElementById('searchbutton').style.transform = "translateY(0)";       
+document.getElementById('searchbutton').style.transition = "all 0.5s ease"; 
+ 
+    document.getElementById('searchwarning').style.transform = "translateX(calc(100vw))"; 
+document.getElementById('searchwarning').style.transition = "all 0.5s ease";  
+    $("#myInput").val("").trigger("keyup");
+    
+    document.getElementById('top').scrollIntoView();   
+};
+
+    </script>
+    
+  <style>
+
+      .flickity-page-dots {
+  display: none;
+}
+      .ui-draggable-helper{
+          list-style: none;
+        color: #fff;
+          margin:0;
+          border-radius: 10px;
+        z-index: 0;
+          height: auto;
+          width: 100%;
+          text-align: center;
+          display: none;
+        background: #00a3e0;
+      }
+
+    body {
+  counter-reset: number-vi number-i;
+}
+#sortablevi1 li, #sortablevi2 li {
+  counter-increment: number-vi;
+}
+#sortablevi1 li .title p:after, #sortablevi2 li .title p:after {
+  content: "\A" counter(number-vi);
+    white-space: pre-wrap;
+    font-family: monospace;
+}  
+
+  #sortablei1 li, #sortablei2 li {
+  counter-increment: number-i;
+}
+#sortablei1 li .title p:after, #sortablei2 li .title p:after {
+  content: "\A" counter(number-i);
+    white-space: pre-wrap;
+    font-family: monospace;
+}  
+
+      
+    #myInput {
+    border-radius: 20px;
+    border: 0;
+    padding: 12px 24px; 
+    width: 100%;
+    height: 18px; 
+        color: #000;
+}
+      
+        #searchfunction{
+        transform: translateX(calc(100vw));
+    transition: 1s ease;
+
+    }
+    
+        #searchwarning{
+        transform: translateX(calc(100vw));
+    transition: 1s ease;
+
+    }
+     
+   /* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+      ul{
+          width: 170px;
+      }  
+         
+
+
+body { font-family: 'Source Sans Pro', sans-serif; }
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 80%;
+    max-width: 500px;
+  min-height: 400px;
+  margin-right: 10px;
+  background: #fff;
+border-radius: 10px;
+border: 2px solid #00a3e0;
+    margin: 5px;
+}
+      
+      .gallery.is-expanded { height: auto; }
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 170px;
+  font-size: 80px;
+  color: white;
+}
+
+      #alert, #alert2, #alert4, #alert5{
+          text-align: center;
+        padding: 0 10px;  
+          background: #666;
+          width: auto;
+          margin: auto;
+          border-radius: 30px;
+          border: 3px solid #666;
+          color: #fff;
+          font-weight: 200;
+        max-width: 300px;
+      }   
+        #alert3{
+          text-align: center;
+          width: auto;
+          margin: auto;
+          border-radius: 30px;
+          color: #666;
+          font-weight: 200;
+            border: 3px solid #fff;
+            max-width: 300px;
+      }   
+      
+      
+    @keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}  
+          
+      
+    @keyframes colorfade {
+  0% {
+    border-color: #666;
+  }
+  
+
+  100% {
+   border-color: #fff;
+  }
+}  
+    
+
+.sortable2      
+      
+      {list-style-type: none; 
+          margin: 0;  
+          background: transparent; 
+          padding: 5px; 
+         width: 50%;
+      min-height: 320px;
+          text-align: center;
+          position: relative;
+float: left;
+
+      }
+.sortable2 li .toggle2
+      {color: #fff;
+          position: absolute;
+          top: 0px;
+          right: 0px;
+        border-radius: 50%;
+          background: #fff;
+          color: #00a3e0;
+          width: 20px;
+          font-size: 12.5px;
+          height: 20px;
+          margin: 5px;
+      }
+      
+.sortable2 li .toggle20
+      {color: #fff;
+          position: absolute;
+          top: 0;
+          right: 0;;
+        border-radius: 50%;
+          background: #fff;
+          color: #00a3e0;
+          width: 20px;
+          font-size: 12.5px;
+          height: 20px;
+          margin: 5px;
+      }
+.sortable2 li .title p
+      {color: white;
+        margin-top: 33px;  
+          font-size: 25px;
+          font-weight: 200;
+          width: 100%;
+      }
+      
+      
+.sortable6 li .title2 p
+      {color: #fff;
+          width: auto;
+        margin: 5px;
+        font-size: 12px;
+          text-align: center;
+      }
+      
+      
+.sortable2 li .title
+      {color: #fff;
+          position: absolute;
+          background: transparent;
+          height: auto;
+          width: 100%;
+      }
+      
+.sortable2 li .title2
+      {color: #fff;
+          position: absolute;
+          background: transparent;
+          margin:0;
+          border-radius: 10px;
+        z-index: 0;
+          height: auto;
+          width: 100%;
+          text-align: center;
+          display: none;
+        background: #00a3e0;
+      }  
+      
+.sortable2 li
+      {margin: 5px auto; 
+          height: 100px;
+          width: auto;
+          border-radius: 10px; 
+          background: #00a3e0;
+      font-size: 15px;
+          font-weight: bold;
+          max-width: 170px;
+          box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
+          
+      }
+        
+      
+   
+      
+
+
+  #sortable11,#sortable12,#sortable13,#sortable14, #sortable2, #sortable3 , #sortable4 , #sortable5, #sortable6 
+      {list-style-type: none; 
+          margin: auto;  
+          padding: 5px; 
+          max-width: 170px;
+      min-height: 40vh;
+          text-align: center;
+          position: relative;
+          float: left;
+          display: inline-block;
+          
+      }
+                 #sortable11 li .toggle2,  #sortable12 li .toggle2,  #sortable13 li .toggle2,  #sortable14 li .toggle2, #sortable2 li .toggle2, #sortable3 li .toggle2, #sortable4 li .toggle2, #sortable5 li .toggle2, #sortable6 li .toggle2
+      {color: #fff;
+          position: absolute;
+          top: 0px;
+          right: 0px;
+        border-radius: 50%;
+          background: #fff;
+          color: #00a3e0;
+          width: 20px;
+          font-size: 12.5px;
+          height: 20px;
+          margin: 5px;
+      }
+      
+              #sortable11 li .toggle20,  #sortable12 li .toggle20,  #sortable13 li .toggle20,  #sortable14 li .toggle20, #sortable2 li .toggle20, #sortable3 li .toggle20, #sortable4 li .toggle20, #sortable5 li .toggle20, #sortable6 li .toggle20
+      {color: #fff;
+          position: absolute;
+          top: 0;
+          right: 0;;
+        border-radius: 50%;
+          background: #fff;
+          color: #00a3e0;
+          width: 20px;
+          font-size: 12.5px;
+          height: 20px;
+          margin: 5px;
+      }
+      
+                 #sortable11 li .title p,  #sortable12 li .title p,  #sortable13 li .title p,  #sortable14 li .title p, #sortable2 li .title p, #sortable3 li .title p, #sortable4 li .title p, #sortable5 li .title p, #sortable6 li .title p
+      {color: white;
+        margin-top: 33px;  
+          font-size: 25px;
+          width: 100%;
+          font-weight: 200;
+      }
+      
+      
+      
+              #sortable11 li .title2 p,  #sortable12 li .title2 p,  #sortable13 li .title2 p,  #sortable14 li .title2 p, #sortable2 li .title2 p, #sortable3 li .title2 p, #sortable4 li .title2 p, #sortable5 li .title2 p, #sortable6 li .title2 p
+      {color: #fff;
+          width: auto;
+        margin: 5px;
+        font-size: 12px;
+          text-align: center;
+      }
+      
+      
+      #sortable11 li .title,  #sortable12 li .title,  #sortable13 li .title,  #sortable14 li .title, #sortable2 li .title, #sortable3 li .title, #sortable4 li .title, #sortable5 li .title, #sortable6 li .title
+      {color: #fff;
+          position: absolute;
+          background: transparent;
+          height: auto;
+          width: 100%;
+      }
+      
+ 
+  #sortable11 li .title2,  #sortable12 li .title2,  #sortable13 li .title2,  #sortable14 li .title2, #sortable2 li .title2, #sortable3 li .title2, #sortable4 li .title2, #sortable5 li .title2, #sortable6 li .title2
+      {color: #fff;
+          position: absolute;
+          background: transparent;
+          margin:0;
+          border-radius: 10px;
+        z-index: 9;
+          height: auto;
+          width: 100%;
+          text-align: center;
+          display: none;
+        background: #00a3e0;
+      }  
+      
+        #sortable11 li,  #sortable12 li,  #sortable13 li,  #sortable14 li, #sortable2 li, #sortable3 li , #sortable4 li , #sortable5 li , #sortable6 li
+      {margin: 5px auto; 
+          height: 100px;
+          width: auto;
+          border-radius: 10px; 
+          background: #00a3e0;
+      font-size: 15px;
+          font-weight: bold;
+          max-width: 170px;
+      }
+      
+.flickity-viewport {
+  transition: height 0.2s;
+    display: flex;
+}
+      
+  .ui-state-highlight2
+      { opacity: 0.4;
+   -moz-box-shadow:    inset 0 0 10px #333;
+   -webkit-box-shadow: inset 0 0 10px #333;
+   box-shadow:         inset 0 0 10px #333;
+    background: #fff;       
+      }  
+    
+      .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active,li{
+          font-family: 'Source Sans Pro', sans-serif;
+          font-weight: 200;
+          color: #000;
+          text-align: center;
+          max-width: 170px;
+          position: relative;
+      }
+      h1{
+        font-family: 'Source Sans Pro', sans-serif;
+          font-weight: 900;
+          color: #000;
+</style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+  <script>
+      
+      var first = true;
+function toggle_visibility(id) {
+    var e = document.getElementById(id), toggle;
+    if (e.style.display == 'block' && !first) {
+        e.style.display = 'none';
+    } else {
+        e.style.display = 'block';
+        var children = document.getElementsByClassName('title2');
+        for(var i = 0; i<children.length; i++){
+            if(children[i].id != id){
+                children[i].style.display = 'none';
+            }
+        }
+    }
+    first = false;
+}
+
+function toggle_class(id) {
+    var thisElem = document.getElementById(id);
+    var invisible = "invisible";
+    var visible = "visible";
+    var classes = thisElem.classList;
+    if (classes == invisible) {
+        thisElem.className = thisElem.className.replace(invisible, visible);
+    } else {
+        thisElem.className = thisElem.className.replace(visible, invisible);
+    }
+}                   
+                                
+  $( function() {
+    $( "ul.droptrue" ).sortable({
+      connectWith: "ul"
+    }); 
+ 
+    $( ".dropfalse" ).sortable({
+      connectWith: "div",
+      dropOnEmpty: false
+    }); 
+ 
+    $( "#sortable11, #sortable12, #sortable13, #sortable14, #sortable2, #sortable3" ).disableSelection();
+  } );
+  </script>
+      <script>
+  $( function() {
+    $( "#sortable11,#sortable12,#sortable13,#sortable14,.sortable2,#sortablevi1,#sortablevi2,#sortablei1,#sortablei2,#sortablen1,#sortablen2, #sortableli, #sortablelli" ).sortable({
+      placeholder: "ui-state-highlight2",
+
+
+    });
+    $( "#sortable" ).disableSelection();
+  } );
+          
+          
+$(function() {
+    $( "#sortable11" ).sortable({
+        connectWith: "ul"
+    }).disableSelection();
+
+    $( "#sortablevi" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablevi li").length > 5){
+            $(ui.sender).sortable('cancel');
+document.getElementById("alert").style.backgroundColor = "#00a3e0";
+document.getElementById("alert").style.animation = "shake 0.42s";
+document.getElementById("alert").style.borderColor = "#00a3e0";
+        
+        setTimeout(function(){ 
+document.getElementById("alert").style.backgroundColor = "";
+document.getElementById("alert").style.animation = "";
+document.getElementById("alert").style.borderColor = "";
+        }, 420);
+            
+
+        }
+    });  
+    
+    $( "#sortablei" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablei li").length > 5){
+            $(ui.sender).sortable('cancel');
+document.getElementById("alert2").style.backgroundColor = "#00a3e0";
+document.getElementById("alert2").style.animation = "shake 0.42s";
+document.getElementById("alert2").style.borderColor = "#00a3e0";
+        
+        setTimeout(function(){ 
+document.getElementById("alert2").style.backgroundColor = "";
+document.getElementById("alert2").style.animation = "";
+document.getElementById("alert2").style.borderColor = "";
+        }, 420);
+            
+
+        }
+    }); 
+
+          
+    $( "#sortablelli" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablelli li").length < 5){
+document.getElementById("alert5").style.backgroundColor = "#00a3e0";
+document.getElementById("alert5").style.animation = "shake 0.42s";
+document.getElementById("alert5").style.borderColor = "#00a3e0";
+        
+        setTimeout(function(){ 
+document.getElementById("alert5").style.backgroundColor = "";
+document.getElementById("alert5").style.animation = "";
+document.getElementById("alert5").style.borderColor = "";
+        }, 420);
+        }
+    }); 
+    
+    
+    $( "#sortablelli, #sortablei, #sortablevi" ).on( "sortreceive", function(event, ui) {
+        if (($("#sortablelli li").length == 5) && ($("#sortablei li").length == 5) && ($("#sortablevi li").length == 5))
+        
+        {
+document.getElementById("alert3").style.borderColor = "#00a3e0";
+document.getElementById("alert3").innerHTML = "Neutral";
+        setTimeout(function(){ 
+document.getElementById("alert3").style.backgroundColor = "";
+document.getElementById("alert3").style.animation = "";
+document.getElementById("alert3").style.borderColor = "";
+        }, 1000);
+        }
+    }); 
+
+});  
+              
+
+$(function() {
+    $( ".sortable2" ).sortable({
+        connectWith: "ul"
+
+
+    }).disableSelection();
+
+    $( "#sortablevi1" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablei1 li").length > 3){
+            $(ui.sender).sortable('cancel');
+        }
+    });
+
+    $( "#sortablevi2" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablei2 li").length > 3){
+            $(ui.sender).sortable('cancel');
+        }
+    });
+    $( "#sortablei1" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablei1 li").length > 3){
+            $(ui.sender).sortable('cancel');
+        }
+    });
+
+    $( "#sortablei2" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablei2 li").length > 3){
+            $(ui.sender).sortable('cancel');
+        }
+    });   
+    
+
+
+    $( "#sortablelli1, #sortablelli2" ).on( "sortreceive", function(event, ui) {
+        
+        var x = 14
+         var divHeight = $('#sortablelli').height() + x;
+            $('.flickity-viewport').css('height', divHeight+'px');
+
+   console.log(divHeight);
+    });
+
+   
+});
+          
+     
+    $(window).on('load',function(){
+      document.getElementById('modal').style.opacity=1;
+;
+    });
+          
+
+function modalhide() {
+  document.getElementById("modal").style.transform = "scale(0)";
+  document.getElementById("modal").style.opacity = 0;
+    
+    
+}
+          
+function help() {
+  document.getElementById("modal").style.transform = "scale(1)";
+  document.getElementById("modal").style.opacity = 1;
+    
+    
+}
+
+  </script>
+    
+
+<style>
+    #modal{
+        background: #00a3e0;
+        height: 100%;
+        width: 100%;
+        z-index: 999;
+        position: fixed;    
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    text-align:center;
+    opacity: 0;
+    transition: 1s;
+        transform-origin: bottom right;
+    }    
+
+</style>    
+    
+</head>
+<body>
+    
+    
+    
+    
+    <div id="modal">
+        
+    <p style="color: #fff;position: fixed; bottom: 28px; right: 80px; z-index: 100"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">!</span> Click this button to search</p> 
+        
+    <p style="color: #fff;position: fixed; bottom: 98px; right: 80px; z-index: 100"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">!</span> Click this button to show this message again</p>    
+
+        
+        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100">            
+<i id="" onclick="" class="fa fa-search" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer;"></i></div>
+    
+<div style="position: fixed; bottom: 90px; right: 20px; z-index: 100">            
+<i id="" onclick="" class="fa fa-question" style="color: #fff; padding: 20px 23px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer; "></i></div>
+    
+        
+        
+        <h1 style="color: #fff; margin-bottom: 20px;">Welcome to the Values Card Sort Activity</h1>
+        
+                <div class="w3-row">
+                                <div class="w3-quarter" style="background: #00a3e0">&nbsp;</div>    
+
+                <div class="w3-half" style="border-radius: 20xp;padding: 0px; background: #00a3e0 ;text-align: left">
+            <p style="color: #fff"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">1</span> Sort your 5 "Very Important" Values, ranked</p>    
+            
+                    
+        </div>
+            
+                                    <div class="w3-quarter" style="background: #00a3e0">&nbsp;</div>    
+
+        </div>
+        
+        <div class="w3-row w3-center" style="border-radius: 20xp;padding: 0; background: #00a3e0">
+  
+            
+            <div class="w3-quarter" style="background: #00a3e0">&nbsp;</div>    
+            
+        <div class="w3-half" style="margin: auto;color: #fff; border: 2px solid #00a3e0; border-radius: 20px; background: #fff">
+            
+            <div class="" style="width: 50%; float: left; padding: 5px;">
+                <div style="text-align: center; border: 2px solid #00a3e0; width: 100%; max-width: 170px; height: 100px;border-radius: 10px; background: #00a3e0; margin-bottom: 5px;"><p style="font-size: 40px; padding-top: 20px;">1</p></div>           
+                  <div style="text-align: center; border: 2px solid #00a3e0; width: 100%; max-width: 170px; height: 100px;border-radius: 10px; background: #00a3e0; margin-bottom: 5px;"><p style="font-size: 40px; padding-top: 20px;">2</p></div>           
+                  <div style="text-align: center; border: 2px solid #00a3e0; width: 100%; max-width: 170px; height: 100px;border-radius: 10px; background: #00a3e0;"><p style="font-size: 40px; padding-top: 20px;">3</p></div>           
+  
+            </div>
+            
+             
+            <div class="" style="width: 50%; float: left; padding: 5px;">
+                  <div style="text-align: center; border: 2px solid #00a3e0; width: 100%; max-width: 170px; height: 100px;border-radius: 10px; background: #00a3e0; margin-bottom: 5px;"><p style="font-size: 40px; padding-top: 20px;">4</p></div>           
+                  <div style="text-align: center; border: 2px solid #00a3e0; width: 100%; max-width: 170px; height: 100px;border-radius: 10px; background: #00a3e0; margin-bottom: 5px;"><p style="font-size: 40px; padding-top: 20px;">5</p></div>     
+            </div>
+
+            
+            </div>    
+            
+                        <div class="w3-quarter" style="background: #00a3e0">&nbsp;</div>    
+            
+        </div>
+        
+        <div class="w3-row" style="margin-top: 10px">
+                                <div class="w3-quarter" style="background: #00a3e0">&nbsp;</div>    
+
+                <div class="w3-half" style="border-radius: 20xp;padding: 0px; background: #00a3e0 ;text-align: left">
+            <p style="color: #fff"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">2</span> Sort your 5 "Important" Values, ranked</p>    
+            
+            <p style="color: #fff"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">3</span> Sort your 5 "Least Important" Values (at least 5)</p>    
+                                
+            <p style="color: #fff"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">4</span> The rest of your values will be sorted into "Neutral"</p>
+            
+            <p onclick="modalhide()" style="color: #fff; text-align: center; margin-top: 40px; cursor: pointer; font-size: 20px"><span style="background: #666; border-radius: 10px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
+                    
+        </div>
+            
+                                    <div class="w3-quarter" style="background: #00a3e0">&nbsp;</div>    
+
+        </div>
+    </div>
+    
+
+    <!-- Flickity HTML init -->
+<div class="gallery js-flickity" data-flickity-options='{ "adaptiveHeight": true, "wrapAround": true, "draggable": false}'>
+
+
+  <div class="gallery-cell" id="sortablevi">   
+      <div class="w3-center">
+          <p style="font-weight: 900; font-size: 20px;"><b>Very Important</b></p>
+          <p id="alert">Choose only 5 values, in ranked order</p></div>
+<div class="w3-row">      
+    <ul class="droptrue w3-center sortable2" id="sortablevi1">
+
+
+    
+    
+    </ul>      
+<ul class="droptrue w3-center sortable2" id="sortablevi2">
+    
+
+    </ul></div>
+      
+      
+      
+</div>
+      <div class="gallery-cell" id="sortablei">   
+      <div class="w3-center">
+          <p style="font-weight: 900; font-size: 20px;"><b>Important</b></p>
+          <p id="alert2">Choose only 5 values, in ranked order</p></div>
+<div class="w3-row">      
+<ul class="droptrue w3-center sortable2" id="sortablei1">
+    </ul>
+    
+<ul class="droptrue w3-center sortable2" id="sortablei2">
+    </ul></div>
+      
+      
+      
+</div>
+    <!--
+      <div class="gallery-cell" id="sortablen" style="height: auto;">   
+        <div class="w3-center">
+      <p style="font-weight: 900; font-size: 20px;">Neutral</p>
+            <p id="alert3"><b>Unlimited!</b></p></div>
+<div class="w3-row">      
+<ul class="droptrue w3-center sortable2" id="sortablen1" ondrop="drop(event)">
+    </ul>
+<ul class="droptrue w3-center sortable2" id="sortablen2" ondrop="drop(event)">
+    </ul></div>
+      
+      
+      
+</div>
+    
+          <div class="gallery-cell" id="sortableli">   
+             <div class="w3-center">
+      <p style="font-weight: 900; font-size: 20px;">Less Important</p>
+            <p id="alert4"><b>Unlimited!</b></p></div>
+<div class="w3-row">      
+<ul class="droptrue w3-center sortable2" id="sortableli1">
+    </ul>  
+<ul class="droptrue w3-center sortable2" id="sortableli2">
+</ul></div>
+      
+</div>-->
+    
+          <div class="gallery-cell" id="sortablelli">   
+              <div class="w3-center">
+      <p style="font-weight: 900; font-size: 20px;">Least Important</p>
+            <p id="alert5">At least 5!</p></div>
+<div class="w3-row">      
+<ul class="droptrue w3-center sortable2" id="sortablelli1">
+    </ul>
+<ul class="droptrue w3-center sortable2" id="sortablelli2">
+    </ul></div>
+      
+      
+      
+</div>
+    
+</div>
+    
+
+
+
+        <script>
+    
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".title *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
+  });
+})
+
+</script>
+    
+
+
+    
+
+    
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 100">            
+<i id="searchbutton" onclick="search()" class="fa fa-search" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>
+    
+<div style="position: fixed; bottom: 90px; right: 20px; z-index: 100">            
+<i id="helpbutton" onclick="help()" class="fa fa-question" style="color: #fff; padding: 20px 23px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer; width"></i></div>
+    
+    
+        <div style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #666; z-index: 100; border-radius: 20px;" id="searchfunction"><input type="text" id="myInput"  placeholder="Search" /> <i id="searchclose" onclick="searchclose()" class="fa fa-times" style="font-size: 16px; color: #707070; padding: 4px; position: absolute; right: 20px; top: 10px; cursor: pointer;"></i>
+    
+        <div id="searchwarning" class="w3-row" style="color: #fff; width: auto; margin: auto; z-index: 100;">
+<p style="font-size: 12px; font-weight: 300; padding: 0; margin: 0"><b>Note:</b> to exit search, click the <i class="fa fa-times"></i> symbol.</p>
+</div></div>
+    
+
+
+        <div class="w3-row w3-center" style=" background: #EEE; ">
+
+
+            
+    <div class="w3-center" style="display: inline-block; background: #fff; border-radius: 10px; border: 2px solid #00a3e0;" id="sortablewindow">
+        
+                    <div class="w3-row w3-center" style="background: transparent;">
+  <p style="font-weight: 900; font-size: 20px; margin-bottom: 10px;" id="alert3"><b>Values</b></p>
+                <p id="alert4">Cards here will be considered "neutral"</p></div>
+            
+        
+        <ul id="sortable11" class="droptrue w3-center">
+
+    <li class="ui-state-default"><div class="title"><p>test
+</p><div class="toggle2 visible" onclick="toggle_visibility('1'); return false;">?</div></div><div class="title2 toggle" id="1"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('1'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('2'); return false;">?</div></div><div class="title2 toggle" id="2"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('2'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('3'); return false;">?</div></div><div class="title2 toggle" id="3"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('3'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('4'); return false;">?</div></div><div class="title2 toggle" id="4"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('4'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('5'); return false;">?</div></div><div class="title2 toggle" id="5"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('5'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('6'); return false;">?</div></div><div class="title2 toggle" id="6"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('6'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('7'); return false;">?</div></div><div class="title2 toggle" id="7"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('7'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('8'); return false;">?</div></div><div class="title2 toggle" id="8"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('8'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('9'); return false;">?</div></div><div class="title2 toggle" id="9"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('9'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('10'); return false;">?</div></div><div class="title2 toggle" id="10"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('10'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('11'); return false;">?</div></div><div class="title2 toggle" id="11"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('11'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('12'); return false;">?</div></div><div class="title2 toggle" id="12"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('12'); return false;">x</div></div></li>
+
+
+</ul>
+        
+        <ul id="sortable12" class="droptrue">
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('13'); return false;">?</div></div><div class="title2 toggle" id="13"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('13'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('14'); return false;">?</div></div><div class="title2 toggle" id="14"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('14'); return false;">x</div></div></li>
+
+
+        <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('15'); return false;">?</div></div><div class="title2 toggle" id="15"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('15'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('16'); return false;">?</div></div><div class="title2 toggle" id="16"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('16'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('17'); return false;">?</div></div><div class="title2 toggle" id="17"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('17'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('18'); return false;">?</div></div><div class="title2 toggle" id="18"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('18'); return false;">x</div></div></li>
+
+
+        <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('19'); return false;">?</div></div><div class="title2 toggle" id="19"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('19'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('20'); return false;">?</div></div><div class="title2 toggle" id="20"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('20'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('21'); return false;">?</div></div><div class="title2 toggle" id="21"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('21'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('22'); return false;">?</div></div><div class="title2 toggle" id="22"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('22'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('23'); return false;">?</div></div><div class="title2 toggle" id="23"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('23'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('24'); return false;">?</div></div><div class="title2 toggle" id="24"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('24'); return false;">x</div></div></li>
+
+
+    
+</ul>
+        
+        <ul id="sortable13" class="droptrue w3-center">
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('25'); return false;">?</div></div><div class="title2 toggle" id="25"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('25'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('26'); return false;">?</div></div><div class="title2 toggle" id="26"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('26'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('27'); return false;">?</div></div><div class="title2 toggle" id="27"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('27'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('28'); return false;">?</div></div><div class="title2 toggle" id="28"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('28'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('29'); return false;">?</div></div><div class="title2 toggle" id="29"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('29'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('30'); return false;">?</div></div><div class="title2 toggle" id="30"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('30'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('31'); return false;">?</div></div><div class="title2 toggle" id="31"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('31'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('32'); return false;">?</div></div><div class="title2 toggle" id="32"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('32'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('33'); return false;">?</div></div><div class="title2 toggle" id="33"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('33'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('34'); return false;">?</div></div><div class="title2 toggle" id="34"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('34'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('35'); return false;">?</div></div><div class="title2 toggle" id="35"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('35'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('36'); return false;">?</div></div><div class="title2 toggle" id="36"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('36'); return false;">x</div></div></li>
+
+
+</ul>
+        
+        <ul id="sortable14" class="droptrue">
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('37'); return false;">?</div></div><div class="title2 toggle" id="37"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('37'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('38'); return false;">?</div></div><div class="title2 toggle" id="38"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('38'); return false;">x</div></div></li>
+
+
+        <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('39'); return false;">?</div></div><div class="title2 toggle" id="39"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('39'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('40'); return false;">?</div></div><div class="title2 toggle" id="40"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('40'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('41'); return false;">?</div></div><div class="title2 toggle" id="41"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('41'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('42'); return false;">?</div></div><div class="title2 toggle" id="42"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('42'); return false;">x</div></div></li>
+
+
+        <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('43'); return false;">?</div></div><div class="title2 toggle" id="43"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('43'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('44'); return false;">?</div></div><div class="title2 toggle" id="44"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('44'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('45'); return false;">?</div></div><div class="title2 toggle" id="45"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('45'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('46'); return false;">?</div></div><div class="title2 toggle" id="46"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('46'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('47'); return false;">?</div></div><div class="title2 toggle" id="47"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('47'); return false;">x</div></div></li>
+
+    <li class="ui-state-default"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('48'); return false;">?</div></div><div class="title2 toggle" id="48"><p>companionship and cooperation between colleagues who share responsibility.
+</p><div class="toggle20" onclick="toggle_visibility('48'); return false;">x</div></div></li>
+
+
+    
+</ul>
+
+
+        </div>
+    </div>
+
+</body>
+</html>
