@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,10 +14,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+          
+
 <script>
-    
-    
+   function print() {
+
+ $('#output').html('');
+        // Show the child DIVs using .map function.
+        $('#sortablevi1 > li, #sortablevi2 > li').map(function() {
+            $('#output').append(this.id + '<br />');  });
+   };
+  
 function search(){
 document.getElementById('searchfunction').style.transform = "translateY(0)";       
 document.getElementById('searchfunction').style.transition = "all 0.5s ease";    document.getElementById('searchbutton').style.transform = "translateX(calc(100vw))";       
@@ -193,8 +202,7 @@ border: 2px solid #00a3e0;
    border-color: #fff;
   }
 }  
-    
-
+      
 .sortable2      
       
       {list-style-type: none; 
@@ -341,6 +349,22 @@ float: left;
           font-weight: 200;
       }
       
+      
+      .title input
+      {color: white;
+        margin-top: 33px;  
+          font-size: 25px;
+          width: 100%;
+          font-weight: 200;
+          text-align: center;
+          background: transparent;
+          border: 0;
+      }
+      
+       .title input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
       
       
               #sortable11 li .title2 p,  #sortable12 li .title2 p,  #sortable13 li .title2 p,  #sortable14 li .title2 p, #sortable2 li .title2 p, #sortable3 li .title2 p, #sortable4 li .title2 p, #sortable5 li .title2 p, #sortable6 li .title2 p
@@ -552,13 +576,13 @@ $(function() {
     }).disableSelection();
 
     $( "#sortablevi1" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablei1 li").length > 3){
+        if($("#sortablevi1 li").length > 3){
             $(ui.sender).sortable('cancel');
         }
     });
 
     $( "#sortablevi2" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablei2 li").length > 3){
+        if($("#sortablevi2 li").length > 3){
             $(ui.sender).sortable('cancel');
         }
     });
@@ -641,16 +665,16 @@ function help() {
     
     <div id="modal">
         
-    <p style="color: #fff;position: fixed; bottom: 28px; right: 80px; z-index: 100"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">!</span> Click this button to search</p> 
+    <p style="color: #fff;position: fixed; bottom: 28px; right: 80px; z-index: 100"> Click here to search</p> 
         
-    <p style="color: #fff;position: fixed; bottom: 98px; right: 80px; z-index: 100"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">!</span> Click this button to show this message again</p>    
+    <p style="color: #fff;position: fixed; bottom: 98px; right: 80px; z-index: 100">Click heres to show this message again</p>    
 
         
         <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100">            
 <i id="" onclick="" class="fa fa-search" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer;"></i></div>
     
 <div style="position: fixed; bottom: 90px; right: 20px; z-index: 100">            
-<i id="" onclick="" class="fa fa-question" style="color: #fff; padding: 20px 23px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer; "></i></div>
+<i id="" onclick="modalhide()" class="fa fa-question" style="color: #fff; padding: 20px 23px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer; "></i></div>
     
         
         
@@ -817,6 +841,9 @@ $(document).ready(function(){
     
 
     
+<div style="position: fixed; bottom: 160px; right: 20px; z-index: 100">            
+<i id="searchbutton" onclick="print()" class="fa fa-print" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>   
+    
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100">            
 <i id="searchbutton" onclick="search()" class="fa fa-search" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>
     
@@ -829,9 +856,15 @@ $(document).ready(function(){
         <div id="searchwarning" class="w3-row" style="color: #fff; width: auto; margin: auto; z-index: 100;">
 <p style="font-size: 12px; font-weight: 300; padding: 0; margin: 0"><b>Note:</b> to exit search, click the <i class="fa fa-times"></i> symbol.</p>
 </div></div>
+        <button onclick="print()">print</button>
+
+
+    <div style="min-height: 20px"><p>My top 5 values are:</p></div>
+<div id="output" style="min-height: 20px"></div>
+
+
     
-
-
+    
         <div class="w3-row w3-center" style=" background: #EEE; ">
 
 
@@ -845,107 +878,106 @@ $(document).ready(function(){
         
         <ul id="sortable11" class="droptrue w3-center">
 
-    <li class="ui-state-default"><div class="title"><p>test
-</p><div class="toggle2 visible" onclick="toggle_visibility('1'); return false;">?</div></div><div class="title2 toggle" id="1"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="accountability"><div class="title"><p>accountability
+</p><div class="toggle2 visible" onclick="toggle_visibility('1'); return false;">?</div></div><div class="title2 toggle" id="1"><p>What short or long-<br>term tasks are you currenly accountable for? What can you do to demonstrate accountability?
 </p><div class="toggle20" onclick="toggle_visibility('1'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('2'); return false;">?</div></div><div class="title2 toggle" id="2"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="ambition"><div class="title"><p>ambition
+</p><div class="toggle2 visible" onclick="toggle_visibility('2'); return false;">?</div></div><div class="title2 toggle" id="2"><p>What aspirations do <br>you have? How will others benefit from what you want to do?
 </p><div class="toggle20" onclick="toggle_visibility('2'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('3'); return false;">?</div></div><div class="title2 toggle" id="3"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="balance"><div class="title"><p>balance
+        </p><div class="toggle2 visible" onclick="toggle_visibility('3'); return false;">?</div></div><div class="title2 toggle" id="3"><p>What is <u>balance</u> to <br>you? How do you examplify <u>balance</u> in your daily decisions?
 </p><div class="toggle20" onclick="toggle_visibility('3'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('4'); return false;">?</div></div><div class="title2 toggle" id="4"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="challenge"><div class="title"><p>challenge
+</p><div class="toggle2 visible" onclick="toggle_visibility('4'); return false;">?</div></div><div class="title2 toggle" id="4"><p>What challenge will <br>you take on today? How does valuing challenges impact those around you?
 </p><div class="toggle20" onclick="toggle_visibility('4'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('5'); return false;">?</div></div><div class="title2 toggle" id="5"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="collegiality"><div class="title"><p>collegiality
+</p><div class="toggle2 visible" onclick="toggle_visibility('5'); return false;">?</div></div><div class="title2 toggle" id="5"><p>What responsibilities <br>do you share with your team/community? What have you learned from having them?
 </p><div class="toggle20" onclick="toggle_visibility('5'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('6'); return false;">?</div></div><div class="title2 toggle" id="6"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="commitmnent"><div class="title"><p>commitment
+</p><div class="toggle2 visible" onclick="toggle_visibility('6'); return false;">?</div></div><div class="title2 toggle" id="6"><p>What commitments <br>do you have today? Who do you know is commited to you?
 </p><div class="toggle20" onclick="toggle_visibility('6'); return false;">x</div></div></li>
-
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('7'); return false;">?</div></div><div class="title2 toggle" id="7"><p>companionship and cooperation between colleagues who share responsibility.
+            
+    <li class="ui-state-default" id="communication"><div class="title"><p>communication
+</p><div class="toggle2 visible" onclick="toggle_visibility('7'); return false;">?</div></div><div class="title2 toggle" id="7"><p>How do you practise<br> good communication? What examples of good communication have you experienced?
 </p><div class="toggle20" onclick="toggle_visibility('7'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('8'); return false;">?</div></div><div class="title2 toggle" id="8"><p>companionship and cooperation between colleagues who share responsibility.
-</p><div class="toggle20" onclick="toggle_visibility('8'); return false;">x</div></div></li>
-
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('9'); return false;">?</div></div><div class="title2 toggle" id="9"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="community"><div class="title"><p>community
+</p><div class="toggle2 visible" onclick="toggle_visibility('8'); return false;">?</div></div><div class="title2 toggle" id="8"><p>What community or communities do you belong to? How has your community helped you?
+</p><div class="toggle20" onclick="toggle_visibility('8'); return false;">x</div></div></li>    
+            
+            <li class="ui-state-default" id="competence"><div class="title"><p>competence
+</p><div class="toggle2 visible" onclick="toggle_visibility('9'); return false;">?</div></div><div class="title2 toggle" id="9"><p>What are you good<br> at? What can you teach?<br>&nbsp;<br>&nbsp;<br>&nbsp;
 </p><div class="toggle20" onclick="toggle_visibility('9'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('10'); return false;">?</div></div><div class="title2 toggle" id="10"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="courage"><div class="title"><p>courage
+</p><div class="toggle2 visible" onclick="toggle_visibility('10'); return false;">?</div></div><div class="title2 toggle" id="10"><p>Where do you step <br>up when others step away? How do you help someone face his/her worst fears?
 </p><div class="toggle20" onclick="toggle_visibility('10'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('11'); return false;">?</div></div><div class="title2 toggle" id="11"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="creativity"><div class="title"><p>creativity
+</p><div class="toggle2 visible" onclick="toggle_visibility('11'); return false;">?</div></div><div class="title2 toggle" id="11"><p>What will you make <br>today? What will help you build for tomorrow?<br>&nbsp;
 </p><div class="toggle20" onclick="toggle_visibility('11'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('12'); return false;">?</div></div><div class="title2 toggle" id="12"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="diligence"><div class="title"><p>diligence
+</p><div class="toggle2 visible" onclick="toggle_visibility('12'); return false;">?</div></div><div class="title2 toggle" id="12"><p>How do you show <br>your care for your work? When have others benefitted from your diligence?
 </p><div class="toggle20" onclick="toggle_visibility('12'); return false;">x</div></div></li>
-
 
 </ul>
         
         <ul id="sortable12" class="droptrue">
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('13'); return false;">?</div></div><div class="title2 toggle" id="13"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="discipline"><div class="title"><p>discipline
+</p><div class="toggle2 visible" onclick="toggle_visibility('13'); return false;">?</div></div><div class="title2 toggle" id="13"><p>When has your <br>discipline paid off for yourself? How will your discipline impact others?
 </p><div class="toggle20" onclick="toggle_visibility('13'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('14'); return false;">?</div></div><div class="title2 toggle" id="14"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="efficiency"><div class="title"><p>efficiency
+</p><div class="toggle2 visible" onclick="toggle_visibility('14'); return false;">?</div></div><div class="title2 toggle" id="14"><p>How do you <br>achieve efficiency? How will you enable others to work efficiently with you?
 </p><div class="toggle20" onclick="toggle_visibility('14'); return false;">x</div></div></li>
 
 
-        <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('15'); return false;">?</div></div><div class="title2 toggle" id="15"><p>companionship and cooperation between colleagues who share responsibility.
+        <li class="ui-state-default" id="empathy"><div class="title"><p>empathy
+</p><div class="toggle2 visible" onclick="toggle_visibility('15'); return false;">?</div></div><div class="title2 toggle" id="15"><p style="font-size: 70%;">What do you usually do <br>to understand someone's difficulties or challenges? When was the last time someone's situation changed your perspective on life?
 </p><div class="toggle20" onclick="toggle_visibility('15'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('16'); return false;">?</div></div><div class="title2 toggle" id="16"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="excellence"><div class="title"><p>excellence
+</p><div class="toggle2 visible" onclick="toggle_visibility('16'); return false;">?</div></div><div class="title2 toggle" id="16"><p>How do you decide <br>what to excel in? What is the most htat you have pushed yourself?
 </p><div class="toggle20" onclick="toggle_visibility('16'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('17'); return false;">?</div></div><div class="title2 toggle" id="17"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="exploration"><div class="title"><p>exploration
+</p><div class="toggle2 visible" onclick="toggle_visibility('17'); return false;">?</div></div><div class="title2 toggle" id="17"><p>What are you <br>curious about today? What discovery can you share tomorrow?
 </p><div class="toggle20" onclick="toggle_visibility('17'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('18'); return false;">?</div></div><div class="title2 toggle" id="18"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="fairness"><div class="title"><p>fairness
+</p><div class="toggle2 visible" onclick="toggle_visibility('18'); return false;">?</div></div><div class="title2 toggle" id="18"><p>When have you <br>needed to speak up about fairness? How have others been fair to you?
 </p><div class="toggle20" onclick="toggle_visibility('18'); return false;">x</div></div></li>
 
 
-        <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('19'); return false;">?</div></div><div class="title2 toggle" id="19"><p>companionship and cooperation between colleagues who share responsibility.
+        <li class="ui-state-default" id="faith"><div class="title"><p>faith
+</p><div class="toggle2 visible" onclick="toggle_visibility('19'); return false;">?</div></div><div class="title2 toggle" id="19"><p>How have you <br>benefitted from having faith in yourself/someone or a situation? When has it been difficult to have faith?
 </p><div class="toggle20" onclick="toggle_visibility('19'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('20'); return false;">?</div></div><div class="title2 toggle" id="20"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="fitness"><div class="title"><p>fitness
+</p><div class="toggle2 visible" onclick="toggle_visibility('20'); return false;">?</div></div><div class="title2 toggle" id="20"><p>What can you do <br>today to be fit for tomorrow? How can you put your health and fitness to use for others?
 </p><div class="toggle20" onclick="toggle_visibility('20'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('21'); return false;">?</div></div><div class="title2 toggle" id="21"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="friendship"><div class="title"><p>friendship
+</p><div class="toggle2 visible" onclick="toggle_visibility('21'); return false;">?</div></div><div class="title2 toggle" id="21"><p>How do you build friendships? What is the best thing that a friend has done for you?
 </p><div class="toggle20" onclick="toggle_visibility('21'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('22'); return false;">?</div></div><div class="title2 toggle" id="22"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="fun"><div class="title"><p>fun
+</p><div class="toggle2 visible" onclick="toggle_visibility('22'); return false;">?</div></div><div class="title2 toggle" id="22"><p>What are your <br>ingredients for a fun day? How does valuing fun impact those around you?
 </p><div class="toggle20" onclick="toggle_visibility('22'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('23'); return false;">?</div></div><div class="title2 toggle" id="23"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="gratitude"><div class="title"><p>gratitute
+</p><div class="toggle2 visible" onclick="toggle_visibility('23'); return false;">?</div></div><div class="title2 toggle" id="23"><p>What are you <br>grateful for? Who will you write a 'thank you' note to you today?
 </p><div class="toggle20" onclick="toggle_visibility('23'); return false;">x</div></div></li>
-
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('24'); return false;">?</div></div><div class="title2 toggle" id="24"><p>companionship and cooperation between colleagues who share responsibility.
+            
+    <li class="ui-state-default" id="happiness"><div class="title"><p>happiness
+</p><div class="toggle2 visible" onclick="toggle_visibility('24'); return false;">?</div></div><div class="title2 toggle" id="24"><p>What makes you <br>happy? What is a quick and simple way to bring joy to someone?
 </p><div class="toggle20" onclick="toggle_visibility('24'); return false;">x</div></div></li>
 
 
@@ -954,52 +986,52 @@ $(document).ready(function(){
         
         <ul id="sortable13" class="droptrue w3-center">
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('25'); return false;">?</div></div><div class="title2 toggle" id="25"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="helpfulness"><div class="title"><p>helpfulness
+</p><div class="toggle2 visible" onclick="toggle_visibility('25'); return false;">?</div></div><div class="title2 toggle" id="25"><p>How do you tell <br>when someone is in need of your help? What have you learned from having helped others?
 </p><div class="toggle20" onclick="toggle_visibility('25'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('26'); return false;">?</div></div><div class="title2 toggle" id="26"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="humility"><div class="title"><p>humility
+</p><div class="toggle2 visible" onclick="toggle_visibility('26'); return false;">?</div></div><div class="title2 toggle" id="26"><p>Why is humility <br>important to you? How do you show your achievements, without showing them off?
 </p><div class="toggle20" onclick="toggle_visibility('26'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('27'); return false;">?</div></div><div class="title2 toggle" id="27"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="humour"><div class="title"><p>humour
+</p><div class="toggle2 visible" onclick="toggle_visibility('27'); return false;">?</div></div><div class="title2 toggle" id="27"><p>When does humour <br>help you, and others? How does your humour connect you with others?
 </p><div class="toggle20" onclick="toggle_visibility('27'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('28'); return false;">?</div></div><div class="title2 toggle" id="28"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="independence"><div class="title"><p>independence
+</p><div class="toggle2 visible" onclick="toggle_visibility('28'); return false;">?</div></div><div class="title2 toggle" id="28"><p>What have you <br>achieved on your own? What have you done to enable someone else to act?
 </p><div class="toggle20" onclick="toggle_visibility('28'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('29'); return false;">?</div></div><div class="title2 toggle" id="29"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="individuality"><div class="title"><p>individuality
+</p><div class="toggle2 visible" onclick="toggle_visibility('29'); return false;">?</div></div><div class="title2 toggle" id="29"><p>What parts of 'you' <br>do you like best? How do you recognise or celebrate the uniqueness of others?
 </p><div class="toggle20" onclick="toggle_visibility('29'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('30'); return false;">?</div></div><div class="title2 toggle" id="30"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="initiative"><div class="title"><p>initiative
+</p><div class="toggle2 visible" onclick="toggle_visibility('30'); return false;">?</div></div><div class="title2 toggle" id="30"><p>When do you take initiative? How will you encourage others to do the same?
 </p><div class="toggle20" onclick="toggle_visibility('30'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('31'); return false;">?</div></div><div class="title2 toggle" id="31"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="integrity"><div class="title"><p>integrity
+</p><div class="toggle2 visible" onclick="toggle_visibility('31'); return false;">?</div></div><div class="title2 toggle" id="31"><p>When is it most <br>difficult to be honest? How do you 'walk the talk'?<br>&nbsp;
 </p><div class="toggle20" onclick="toggle_visibility('31'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('32'); return false;">?</div></div><div class="title2 toggle" id="32"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="kindness"><div class="title"><p>kindness
+</p><div class="toggle2 visible" onclick="toggle_visibility('32'); return false;">?</div></div><div class="title2 toggle" id="32"><p>When can you do to <br>inspire kindness in others? How do you show kindness to yourself?
 </p><div class="toggle20" onclick="toggle_visibility('32'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('33'); return false;">?</div></div><div class="title2 toggle" id="33"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="knowledge"><div class="title"><p>knowledge
+</p><div class="toggle2 visible" onclick="toggle_visibility('33'); return false;">?</div></div><div class="title2 toggle" id="33"><p>When do you want <br>to learn today? What insights can you share tomorrow?<br>&nbsp;
 </p><div class="toggle20" onclick="toggle_visibility('33'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('34'); return false;">?</div></div><div class="title2 toggle" id="34"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="leadership"><div class="title"><p>leadership
+</p><div class="toggle2 visible" onclick="toggle_visibility('34'); return false;">?</div></div><div class="title2 toggle" id="34"><p>When do you lead? <br>When do you follow?<br>&nbsp;<br>&nbsp;
 </p><div class="toggle20" onclick="toggle_visibility('34'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('35'); return false;">?</div></div><div class="title2 toggle" id="35"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="mindfulness"><div class="title"><p>mindfulness
+</p><div class="toggle2 visible" onclick="toggle_visibility('35'); return false;">?</div></div><div class="title2 toggle" id="35"><p>How do you stay <br>focused and mindful? How does your mindfulness impact others?
 </p><div class="toggle20" onclick="toggle_visibility('35'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('36'); return false;">?</div></div><div class="title2 toggle" id="36"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="objectivity"><div class="title"><p>objectivity
+</p><div class="toggle2 visible" onclick="toggle_visibility('36'); return false;">?</div></div><div class="title2 toggle" id="36"><p>When is it difficult to <br>take an objective stand? What do you do when faced with an unreasonable person or situation?
 </p><div class="toggle20" onclick="toggle_visibility('36'); return false;">x</div></div></li>
 
 
@@ -1007,57 +1039,76 @@ $(document).ready(function(){
         
         <ul id="sortable14" class="droptrue">
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('37'); return false;">?</div></div><div class="title2 toggle" id="37"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="optimism"><div class="title"><p>optimism
+</p><div class="toggle2 visible" onclick="toggle_visibility('37'); return false;">?</div></div><div class="title2 toggle" id="37"><p>What are some of <br>the good things that have happened to you? How do you share your optimism with others?
 </p><div class="toggle20" onclick="toggle_visibility('37'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('38'); return false;">?</div></div><div class="title2 toggle" id="38"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="patience"><div class="title"><p>patience
+</p><div class="toggle2 visible" onclick="toggle_visibility('38'); return false;">?</div></div><div class="title2 toggle" id="38"><p>How has your <br>patience helped you, and others? What do you do when a person or situation tests your patience?
 </p><div class="toggle20" onclick="toggle_visibility('38'); return false;">x</div></div></li>
 
 
-        <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('39'); return false;">?</div></div><div class="title2 toggle" id="39"><p>companionship and cooperation between colleagues who share responsibility.
+        <li class="ui-state-default" id="recognition"><div class="title"><p>recognition
+</p><div class="toggle2 visible" onclick="toggle_visibility('39'); return false;">?</div></div><div class="title2 toggle" id="39"><p>Who can you affirm <br>and recognise today? What will you be recognised for tomorrow?
 </p><div class="toggle20" onclick="toggle_visibility('39'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('40'); return false;">?</div></div><div class="title2 toggle" id="40"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="resilience"><div class="title"><p>resilience
+</p><div class="toggle2 visible" onclick="toggle_visibility('40'); return false;">?</div></div><div class="title2 toggle" id="40"><p>What helps you get <br>through a tough situation? What could you do to encourage resilience in others?
 </p><div class="toggle20" onclick="toggle_visibility('40'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('41'); return false;">?</div></div><div class="title2 toggle" id="41"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="resourcefulness"><div class="title"><p>resourcefulness
+</p><div class="toggle2 visible" onclick="toggle_visibility('41'); return false;">?</div></div><div class="title2 toggle" id="41"><p>When have you been &nbsp;<br>most resourceful? How has your resourcefulness helped others?
 </p><div class="toggle20" onclick="toggle_visibility('41'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('42'); return false;">?</div></div><div class="title2 toggle" id="42"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="respect"><div class="title"><p>respect
+</p><div class="toggle2 visible" onclick="toggle_visibility('42'); return false;">?</div></div><div class="title2 toggle" id="42"><p>How do you show consideration to others? How do you stand up to disrespectful behaviour?
 </p><div class="toggle20" onclick="toggle_visibility('42'); return false;">x</div></div></li>
 
 
-        <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('43'); return false;">?</div></div><div class="title2 toggle" id="43"><p>companionship and cooperation between colleagues who share responsibility.
+        <li class="ui-state-default" id="responsibility"><div class="title"><p>responsibility
+</p><div class="toggle2 visible" onclick="toggle_visibility('43'); return false;">?</div></div><div class="title2 toggle" id="43"><p>When do you say <br>'yes'? When do you say 'no'?<br>&nbsp;
 </p><div class="toggle20" onclick="toggle_visibility('43'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('44'); return false;">?</div></div><div class="title2 toggle" id="44"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="safety"><div class="title"><p>safety
+</p><div class="toggle2 visible" onclick="toggle_visibility('44'); return false;">?</div></div><div class="title2 toggle" id="44"><p>What do you need to &nbsp;<br>feel safe? How can you help someone feel more safe and secure?
 </p><div class="toggle20" onclick="toggle_visibility('44'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('45'); return false;">?</div></div><div class="title2 toggle" id="45"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="spirituality"><div class="title"><p>spirituality
+        </p><div class="toggle2 visible" onclick="toggle_visibility('45'); return false;">?</div></div><div class="title2 toggle" id="45"><p>What does <br><u>spirituality</u> mean to you? How does your spirituality help you, and others?
 </p><div class="toggle20" onclick="toggle_visibility('45'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('46'); return false;">?</div></div><div class="title2 toggle" id="46"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="sustainability"><div class="title"><p>sustainability
+</p><div class="toggle2 visible" onclick="toggle_visibility('46'); return false;">?</div></div><div class="title2 toggle" id="46"><p>What resources did <br>you use today? How does valuing sustainability shape your everyday decisions?
 </p><div class="toggle20" onclick="toggle_visibility('46'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('47'); return false;">?</div></div><div class="title2 toggle" id="47"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="teamwork"><div class="title"><p>teamwork
+</p><div class="toggle2 visible" onclick="toggle_visibility('47'); return false;">?</div></div><div class="title2 toggle" id="47"><p>What did you learn <br>from your team today? What can they learn from you tomorrow?
 </p><div class="toggle20" onclick="toggle_visibility('47'); return false;">x</div></div></li>
 
-    <li class="ui-state-default"><div class="title"><p>collegiality
-</p><div class="toggle2 visible" onclick="toggle_visibility('48'); return false;">?</div></div><div class="title2 toggle" id="48"><p>companionship and cooperation between colleagues who share responsibility.
+    <li class="ui-state-default" id="trust"><div class="title"><p>trust
+</p><div class="toggle2 visible" onclick="toggle_visibility('48'); return false;">?</div></div><div class="title2 toggle" id="48"><p>What can you do to <br>earn the trust of others? How do you build trust in your team?
 </p><div class="toggle20" onclick="toggle_visibility('48'); return false;">x</div></div></li>
 
 
+    <li class="ui-state-default wildcard" id="wildcard"><div class="title"><input id="wildInput" type="text" placeholder="wildcard">
+        
+        <script>
+    
+$("#wildInput").keyup(function(){
+    var input2 = $("#wildInput").val();    
+      console.log(input2);
+    $('#wildcard').prop('id', "");
+$('.wildcard').prop('id', input2);
+      
+  });
+
+
+            </script> 
+        <div class="toggle2 visible" onclick="toggle_visibility('49'); return false;">?</div></div><div class="title2 toggle" id="49"><p>You may add a <br>value not listed here.<br><span style="font-weight: 300">Click on the text to type.</span><br>Why is this value important to you?
+</p><div class="toggle20" onclick="toggle_visibility('49'); return false;">x</div></div></li>
+            
+     
+            
     
 </ul>
 
