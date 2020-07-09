@@ -494,12 +494,16 @@ function toggle_class(id) {
                                 
   $( function() {
     $( "ul.droptrue" ).sortable({
-      connectWith: "ul"
+      connectWith: "ul",
+           helper: 'clone',
+   appendTo: "body"
     }); 
  
     $( ".dropfalse" ).sortable({
       connectWith: "div",
-      dropOnEmpty: false
+      dropOnEmpty: false,
+           helper: 'clone',
+   appendTo: "body"
     }); 
  
     $( "#sortable11, #sortable12, #sortable13, #sortable14, #sortable2, #sortable3" ).disableSelection();
@@ -518,7 +522,9 @@ function toggle_class(id) {
           
 $(function() {
     $( "#sortable11" ).sortable({
-        connectWith: "ul"
+        connectWith: "ul",
+           helper: 'clone',
+   appendTo: "body"
     }).disableSelection();
 
     $( "#sortablevi" ).on( "sortreceive", function(event, ui) {
@@ -590,8 +596,9 @@ document.getElementById("alert3").style.borderColor = "";
 
 $(function() {
     $( ".sortable2" ).sortable({
-        connectWith: "ul"
-
+        connectWith: "ul",
+   helper: 'clone',
+   appendTo: "body"
 
     }).disableSelection();
 
