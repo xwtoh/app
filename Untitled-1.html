@@ -13,9 +13,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          
+          <script type='text/javascript' src='http://rawgit.com/fzondlo/jquery-columns/master/jquery-columns-plugin.js'></script>
 
-<script>
+<script>    
+    
+    $('#sortablevi2').cols(3);
+
+    
    function print() {
 
  $('#output').html('');
@@ -65,6 +69,20 @@ document.getElementById('searchwarning').style.transition = "all 0.5s ease";
     </script>
     
   <style>
+         
+      ul{
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+          -webkit-column-width: 170px;
+   -moz-column-width: 170px;
+        column-width: 170px;
+      }
+      li{
+          min-height: 100px;
+          display: inline-block;
+          width: 170px;
+      }
 
 
       
@@ -134,11 +152,6 @@ document.getElementById('searchwarning').style.transition = "all 0.5s ease";
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-      ul{
-          width: 170px;
-      }  
-         
 
 
 body { font-family: 'Source Sans Pro', sans-serif; }
@@ -229,7 +242,7 @@ border: 2px solid #00a3e0;
           margin: 0;  
           background: transparent; 
           padding: 5px; 
-         width: 50%;
+         width: 100%;
       min-height: 320px;
           text-align: center;
           position: relative;
@@ -306,12 +319,11 @@ float: left;
 .sortable2 li
       {margin: 5px auto; 
           height: 100px;
-          width: auto;
+          width: 170px;
           border-radius: 10px; 
           background: #00a3e0;
       font-size: 15px;
           font-weight: bold;
-          max-width: 170px;
           box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
           
       }
@@ -325,8 +337,7 @@ float: left;
       {list-style-type: none; 
           margin: auto;  
           padding: 5px; 
-          max-width: 170px;
-      min-height: 40vh;
+      min-height: 330px;
           text-align: center;
           position: relative;
           float: left;
@@ -420,14 +431,13 @@ float: left;
       }  
       
         #sortable11 li,  #sortable12 li,  #sortable13 li,  #sortable14 li, #sortable2 li, #sortable3 li , #sortable4 li , #sortable5 li , #sortable6 li
-      {margin: 5px auto; 
+      {margin: 0 auto; 
           height: 100px;
-          width: auto;
+          width: 170px;;
           border-radius: 10px; 
           background: #00a3e0;
       font-size: 15px;
           font-weight: bold;
-          max-width: 170px;
       }
       
 .flickity-viewport {
@@ -527,8 +537,8 @@ $(function() {
    appendTo: "body"
     }).disableSelection();
 
-    $( "#sortablevi" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablevi li").length > 5){
+    $( "#sortablevi1" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablevi1 li").length > 5){
             $(ui.sender).sortable('cancel');
 document.getElementById("alert").style.backgroundColor = "#00a3e0";
 document.getElementById("alert").style.animation = "shake 0.42s";
@@ -544,8 +554,8 @@ document.getElementById("alert").style.borderColor = "";
         }
     });  
     
-    $( "#sortablei" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablei li").length > 5){
+    $( "#sortablei1" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablei1 li").length > 5){
             $(ui.sender).sortable('cancel');
 document.getElementById("alert2").style.backgroundColor = "#00a3e0";
 document.getElementById("alert2").style.animation = "shake 0.42s";
@@ -562,8 +572,8 @@ document.getElementById("alert2").style.borderColor = "";
     }); 
 
           
-    $( "#sortablelli" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablelli li").length < 5){
+    $( "#sortablelli1" ).on( "sortreceive", function(event, ui) {
+        if($("#sortablelli1 li").length < 5){
 document.getElementById("alert5").style.backgroundColor = "#00a3e0";
 document.getElementById("alert5").style.animation = "shake 0.42s";
 document.getElementById("alert5").style.borderColor = "#00a3e0";
@@ -578,7 +588,7 @@ document.getElementById("alert5").style.borderColor = "";
     
     
     $( "#sortablelli, #sortablei, #sortablevi" ).on( "sortreceive", function(event, ui) {
-        if (($("#sortablelli li").length == 5) && ($("#sortablei li").length == 5) && ($("#sortablevi li").length == 5))
+        if (($("#sortablelli1 li").length == 5) && ($("#sortablei1 li").length == 5) && ($("#sortablevi1 li").length == 5))
         
         {
 document.getElementById("alert3").style.borderColor = "#00a3e0";
@@ -603,7 +613,7 @@ $(function() {
     }).disableSelection();
 
     $( "#sortablevi1" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablevi1 li").length > 3){
+        if($("#sortablevi1 li").length > 5){
             $(ui.sender).sortable('cancel');
         }
     });
@@ -614,7 +624,7 @@ $(function() {
         }
     });
     $( "#sortablei1" ).on( "sortreceive", function(event, ui) {
-        if($("#sortablei1 li").length > 3){
+        if($("#sortablei1 li").length > 5){
             $(ui.sender).sortable('cancel');
         }
     });
@@ -634,9 +644,7 @@ $(function() {
             $('.flickity-viewport').css('height', divHeight+'px');
 
    console.log(divHeight);
-    });
-
-   
+    });  
 });
           
      
@@ -683,7 +691,7 @@ function help() {
         right: 0;
     text-align:center;
     opacity: 0;
-    transition: 1s;
+    transition: 0.3s;
         transform-origin: bottom right;
     }  
     
@@ -699,7 +707,7 @@ function help() {
         right: 0;
     text-align:center;
     transform: scale(0);
-    transition: 1s;
+    transition: 0.3s;
         transform-origin: bottom right;
         
     }    
@@ -714,17 +722,33 @@ function help() {
               width: 100%;
           }
           
+                   
+      ul{
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+          -webkit-column-width: 50%;
+   -moz-column-width: 50%;
+        column-width: 50px;
+      }
+      li{
+          display: inline-block;
+          min-height: 40px;
+      }
+
+
+          
           .gallery, .gallery-cell, .flickity-viewport{
               height: 45%;
           }
           
           .gallery-cell{
-              min-height: 50vh;
+              min-height: 400px;
               
           }
           
           
-          #sortablevi1, #sortablevi2{
+          #sortablevi1, #sortablei1, #sortablelli1{
               min-height: 150px;
           }
           .sortable2{
@@ -755,20 +779,42 @@ function help() {
     font-family: monospace;
 }  
           
-          #sortable11 li .toggle2, #sortable11 li .toggle20
+          #sortable11 li .toggle2
           {
-              width: 30px;
-              height: 30px;
-              font-size: 20px;
+              width: 20px;
+              height: 20px;
+              font-size: 15px;
           }    
+          
+          #sortable11 li .toggle20
+          {
+              width: 50px;
+              height: 50px;
+              font-size: 30px;
+              position: fixed;
+              bottom: 0;
+              right: 0;
+          }    
+
           
           .sortable2 li .toggle2,
           .sortable2 li .toggle20,
           #sortable11 li .toggle2, #sortable12 li .toggle2, #sortable13 li .toggle2, #sortable14 li .toggle2, #sortable2 li .toggle2, #sortable3 li .toggle2, #sortable4 li .toggle2, #sortable5 li .toggle2, #sortable6 li .toggle2
           {
-              width: 30px;
-              height: 30px;
-              font-size: 20px;
+              width: 20px;
+              height: 20px;
+              font-size: 15px;
+              opacity: 0.4;
+          }          
+          
+          .sortable2 li .toggle2:hover,
+          .sortable2 li .toggle20:hover,
+          #sortable11 li .toggle2:hover, #sortable12 li .toggle2:hover, #sortable13 li .toggle2:hover, #sortable14 li .toggle2:hover, #sortable2 li .toggle2:hover, #sortable3 li .toggle2:hover, #sortable4 li .toggle2:hover, #sortable5 li .toggle2:hover, #sortable6 li .toggle2:hover
+          {
+              width: 20px;
+              height: 20px;
+              font-size: 15px;
+              opacity: 1;
           }
           #sortable11 li .title2 p,
           #sortable12 li .title2 p,
@@ -776,8 +822,15 @@ function help() {
           #sortable14 li .title2 p
           {width: 100%;
             height: auto;
-              background: #000;
+              background: #00a3e0;
               margin: 0;
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 50vh;
+              font-size: 20px;
+              padding:30px;
           }
           #sortable11 li .title p, #sortable12 li .title p, #sortable13 li .title p, #sortable14 li .title p, #sortable2 li .title p, #sortable3 li .title p, #sortable4 li .title p, #sortable5 li .title p, #sortable6 li .title p{
               margin: 0
@@ -795,7 +848,7 @@ function help() {
           }
 
           .sortable2 li .title2{
-           background: #000;   
+           background: #00a3e0;   
           }
           .sortable2 li .title p{
               margin: 0
@@ -803,13 +856,13 @@ function help() {
           .sortable2 li, #sortablelli1,#sortablelli2, #sortablevi1,#sortablevi2,#sortablei1,#sortablei2{
               width: 100%;
               max-width: 100%;
-              height: 40px;
+              height: auto;
           }           
           
           
           #sortable11,#sortable12,#sortable13, #sortable14{
               min-height: auto;
-              max-width: 50%;
+              max-width: 100%;
               text-align: center;
               
           }  
@@ -817,7 +870,6 @@ function help() {
           
         #sortable11 li,#sortable12 li, #sortable13 li, #sortable14 li{
               width: 100%;
-              max-width: 100%;
               height: 40px;
           } 
           #sortablewindow{
@@ -838,20 +890,11 @@ function help() {
     
     <div id="modal">
         
-    <p style="color: #fff;position: fixed; bottom: 28px; right: 80px; z-index: 100"> Click here to search</p> 
-        
-    <p style="color: #fff;position: fixed; bottom: 98px; right: 80px; z-index: 100">Click heres to show this message again</p>    
 
-        
-        <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100">            
-<i id="" onclick="" class="fa fa-search" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer;"></i></div>
-    
-<div style="position: fixed; bottom: 90px; right: 20px; z-index: 100">            
-<i id="" onclick="modalhide()" class="fa fa-question" style="color: #fff; padding: 20px 23px; border-radius: 50%; background: #666; z-index: 100; opacity: 1; cursor: pointer; "></i></div>
     
         
         
-        <h1 style="color: #fff; margin-bottom: 20px;">Welcome to the Values Card Sort Activity</h1>
+        <h1 style="color: #fff; margin-bottom: 20px;">Values Card Sort Activity</h1>
         
                 <div class="w3-row">
                                 <div class="w3-quarter w3-hide-small" style="background: #00a3e0">&nbsp;</div>    
@@ -902,8 +945,9 @@ function help() {
             <p style="color: #fff"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">3</span> Sort your 5 "Least Important" Values (at least 5)</p>    
                                 
             <p style="color: #fff"><span style="background: #666; border-radius: 50%;padding: 5px 10px; color: #fff">4</span> The rest of your values will be sorted into "Neutral"</p>
-            
-            <p onclick="modalhide()" style="color: #fff; text-align: center; margin-top: 10px; cursor: pointer; font-size: 20px"><span style="background: #666; border-radius: 10px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
+                    
+                    
+                <p onclick="modalhide()" style="color: #fff; text-align: center; margin-top: 10px; cursor: pointer; font-size: 20px; position: absolute; bottom: 20px; right: 0; left: 0"><span style="background: #666; border-radius: 20px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
                     
         </div>
             
@@ -915,6 +959,7 @@ function help() {
     
     
     <div id="modal2">
+                <p onclick="modalhide2()" style="color: #fff; text-align: center; margin-top: 10px; cursor: pointer; font-size: 20px; position: absolute; bottom: 20px; right: 0; left: 0"><span style="background: #666; border-radius: 20px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
         
         <div class="w3-row w3-center" style="border-radius: 20xp;padding: 0; background: #f5f5f5">
   
@@ -939,17 +984,7 @@ function help() {
                         <div class="w3-quarter w3-hide-small" style="background: transparent">&nbsp;</div>    
             
         </div>
-        
-        <div class="w3-row" style="margin-top: 10px">
-                                <div class="w3-quarter w3-hide-small" style="background: transparent">&nbsp;</div>    
 
-                <div class="w3-half" style="border-radius: 20xp;padding: 0px; background: #f5f5f5 ;text-align: left">
-        <p onclick="modalhide2()" style="color: #fff; text-align: center; margin-top: 10px; cursor: pointer; font-size: 20px"><span style="background: #666; border-radius: 10px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
-        </div>
-            
-                                    <div class="w3-quarter w3-hide-small" style="background: transparent">&nbsp;</div>    
-
-        </div>
     </div>
     
 
@@ -968,10 +1003,9 @@ function help() {
     
     
     </ul>      
-<ul class="droptrue w3-center sortable2" id="sortablevi2">
-    
 
-    </ul></div>
+      
+      </div>
       
       
       
@@ -984,8 +1018,7 @@ function help() {
 <ul class="droptrue w3-center sortable2" id="sortablei1">
     </ul>
     
-<ul class="droptrue w3-center sortable2" id="sortablei2">
-    </ul></div>
+</div>
       
       
       
@@ -1024,8 +1057,7 @@ function help() {
 <div class="w3-row">      
 <ul class="droptrue w3-center sortable2" id="sortablelli1">
     </ul>
-<ul class="droptrue w3-center sortable2" id="sortablelli2">
-    </ul></div>
+</div>
       
       
       
@@ -1054,14 +1086,14 @@ $(document).ready(function(){
     
 
     
-<div style="position: fixed; bottom: 160px; right: 20px; z-index: 100">            
-<i id="searchbutton" onclick="print()" class="fa fa-print" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>   
+<div style="position: fixed; bottom: 100px; right: 20px; z-index: 100">            
+<i id="searchbutton" onclick="print()" class="fa fa-print" style="color: #fff; padding: 10px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>   
     
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 100">            
-<i id="searchbutton" onclick="search()" class="fa fa-search" style="color: #fff; padding: 20px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>
+<i id="searchbutton" onclick="search()" class="fa fa-search" style="color: #fff; padding: 10px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>
     
-<div style="position: fixed; bottom: 90px; right: 20px; z-index: 100">            
-<i id="helpbutton" onclick="help()" class="fa fa-question" style="color: #fff; padding: 20px 23px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer; width"></i></div>
+<div style="position: fixed; bottom: 60px; right: 20px; z-index: 100">            
+<i id="helpbutton" onclick="help()" class="fa fa-question" style="color: #fff; padding: 10px 13px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer; width"></i></div>
     
     
         <div style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #666; z-index: 100; border-radius: 20px;" id="searchfunction"><input type="text" id="myInput"  placeholder="Search" /> <i id="searchclose" onclick="searchclose()" class="fa fa-times" style="font-size: 16px; color: #707070; padding: 4px; position: absolute; right: 20px; top: 10px; cursor: pointer;"></i>
@@ -1086,8 +1118,13 @@ $(document).ready(function(){
         <ul id="sortable11" class="droptrue w3-center">
 
     <li class="ui-state-default" id="accountability"><div class="title"><p>accountability
-</p><div class="toggle2 visible" onclick="toggle_visibility('1'); return false;">?</div></div><div class="title2 toggle" id="1"><p>What short or long-<br>term tasks are you currenly accountable for? What can you do to demonstrate accountability?
-</p><div class="toggle20" onclick="toggle_visibility('1'); return false;">x</div></div></li>
+</p><div class="toggle2 visible" onclick="toggle_visibility('1'); return false;">?</div></div>
+        
+<div class="title2 toggle" id="1"><p>What short or long-<br>term tasks are you currently accountable for? What can you do to demonstrate accountability?
+</p><div class="toggle20" onclick="toggle_visibility('1'); return false;">x</div></div>
+            
+            
+            </li>
 
     <li class="ui-state-default" id="ambition"><div class="title"><p>ambition
 </p><div class="toggle2 visible" onclick="toggle_visibility('2'); return false;">?</div></div><div class="title2 toggle" id="2"><p>What aspirations do <br>you have? How will others benefit from what you want to do?
@@ -1133,9 +1170,7 @@ $(document).ready(function(){
 </p><div class="toggle2 visible" onclick="toggle_visibility('12'); return false;">?</div></div><div class="title2 toggle" id="12"><p>How do you show <br>your care for your work? When have others benefitted from your diligence?
 </p><div class="toggle20" onclick="toggle_visibility('12'); return false;">x</div></div></li>
 
-</ul>
-        
-        <ul id="sortable12" class="droptrue">
+
 
     <li class="ui-state-default" id="discipline"><div class="title"><p>discipline
 </p><div class="toggle2 visible" onclick="toggle_visibility('13'); return false;">?</div></div><div class="title2 toggle" id="13"><p>When has your <br>discipline paid off for yourself? How will your discipline impact others?
@@ -1189,9 +1224,7 @@ $(document).ready(function(){
 
 
     
-</ul>
-        
-        <ul id="sortable13" class="droptrue w3-center">
+
 
     <li class="ui-state-default" id="helpfulness"><div class="title"><p>helpfulness
 </p><div class="toggle2 visible" onclick="toggle_visibility('25'); return false;">?</div></div><div class="title2 toggle" id="25"><p>How do you tell <br>when someone is in need of your help? What have you learned from having helped others?
@@ -1242,9 +1275,7 @@ $(document).ready(function(){
 </p><div class="toggle20" onclick="toggle_visibility('36'); return false;">x</div></div></li>
 
 
-</ul>
-        
-        <ul id="sortable14" class="droptrue">
+
 
     <li class="ui-state-default" id="optimism"><div class="title"><p>optimism
 </p><div class="toggle2 visible" onclick="toggle_visibility('37'); return false;">?</div></div><div class="title2 toggle" id="37"><p>What are some of <br>the good things that have happened to you? How do you share your optimism with others?
