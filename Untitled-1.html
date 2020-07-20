@@ -705,8 +705,7 @@ function help() {
     text-align:center;
     transform: scale(0);
     transition: 0.3s;
-        transform-origin: bottom right;
-        
+        transform-origin: bottom right;      
     }    
               #wildInput2{
               display: none;
@@ -740,13 +739,12 @@ function help() {
           }
           
           .gallery-cell{
-              min-height: 400px;
-              
+              height: 45vh;  
           }
           
           
           #sortablevi1, #sortablei1, #sortablelli1{
-              min-height: 150px;
+              min-height: 45vh;
           }
           .sortable2{
               min-height: 50%;
@@ -860,6 +858,7 @@ function help() {
               width: 100%;
               max-width: 100%;
               height: auto;
+              margin: 0;
           }           
           
           
@@ -969,7 +968,7 @@ function help() {
             
             <div class="w3-quarter w3-hide-small" style="background: transparent">&nbsp;</div>    
             
-        <div class="w3-half" style="margin: auto;color: #fff; border-radius: 20px; background: #666; margin-top: 24px; overflow-y: scroll; height: 80vh">
+        <div class="w3-half" style="margin: auto;color: #fff; border-radius: 20px; background: #666; margin-top: 24px; overflow-y: scroll; height: 80vh; box-shadow: inset 0 0 10px #000000;">
 
 <div style=""><h3>My most important 5 values are:</h3></div>
 <div id="output" style="padding-bottom: 5px; color: #fff; line-height: 2.2em"></div>
