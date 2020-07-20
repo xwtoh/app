@@ -16,7 +16,7 @@
 
 <script>    
     
-    
+
    function print() {
 
  $('#output').html('');
@@ -73,7 +73,6 @@ document.getElementById('printbutton').style.transition = "all 0.5s ease";
 document.getElementById('searchwarning').style.transition = "all 0.5s ease";  
     $("#myInput").val("").trigger("keyup");
     
-    document.getElementById('top').scrollIntoView();   
 };
 
     </script>
@@ -984,8 +983,6 @@ function help() {
     
     <div id="modal2">
                 <p onclick="modalhide2()" style="color: #fff; text-align: center; margin-top: 10px; cursor: pointer; font-size: 20px; position: absolute; bottom: 20px; right: 0; left: 0"><span style="background: #000; border-radius: 20px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
-<button onClick="window.print()">Print this page</button>
-
 
         <div class="w3-row w3-center" style="border-radius: 20xp;padding: 0; background: #f5f5f5">
   
@@ -1004,7 +1001,23 @@ function help() {
     
 <div style=""><h3>Values I consider neutral to me are:</h3></div>
 <div id="output3" style="padding-bottom: 5px; color: #fff; line-height: 2.2em"></div>
-
+            <p><b>Today's date :</b></p>
+            <p id="date"></p>
+<script>    
+    
+    
+    n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+    
+    document.getElementById("date").innerHTML = d + "/" + m + "/" + y;</script>
+            
+            
+            <p></p>
+            <p></p>
+            <p><b>Tip:</b> press <u>ctrl+p</u> or <u>command+p</u> to print</p>    
+            
             </div>    
             
                         <div class="w3-quarter w3-hide-small" style="background: transparent">&nbsp;</div>    
