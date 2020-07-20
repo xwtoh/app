@@ -45,17 +45,30 @@
   
 function search(){
 document.getElementById('searchfunction').style.transform = "translateY(0)";       
-document.getElementById('searchfunction').style.transition = "all 0.5s ease";    document.getElementById('searchbutton').style.transform = "translateX(calc(100vw))";       
-document.getElementById('searchbutton').style.transition = "all 1s ease"; 
+document.getElementById('searchfunction').style.transition = "all 0.5s ease";    
+    document.getElementById('searchbutton').style.transform = "translateX(calc(100vw))";       
+document.getElementById('searchwarning').style.transition = "all 1s ease"; 
     document.getElementById('searchwarning').style.transform = "translateY(0)"; 
 document.getElementById('searchwarning').style.transition = "all 0.5s ease";    
+
+        document.getElementById('helpbutton').style.transform = "translateX(calc(100vw))";       
+    document.getElementById('printbutton').style.transform = "translateX(calc(100vw))";       
+document.getElementById('helpbutton').style.transition = "all 0.5s ease";    
+document.getElementById('printbutton').style.transition = "all 0.5s ease";    
 
 };    
 function searchclose(){
 document.getElementById('searchfunction').style.transform = "translateX(calc(100vw))";     
-document.getElementById('searchfunction').style.transition = "all 1s ease";    document.getElementById('searchbutton').style.transform = "translateY(0)";       
+document.getElementById('searchfunction').style.transition = "all 1s ease";    
+    document.getElementById('searchbutton').style.transform = "translateY(0)";       
 document.getElementById('searchbutton').style.transition = "all 0.5s ease"; 
- 
+    
+         document.getElementById('helpbutton').style.transform = "translateY(0)";       
+    document.getElementById('printbutton').style.transform = "translateY(0)";      
+    document.getElementById('helpbutton').style.transition = "all 0.5s ease";    
+document.getElementById('printbutton').style.transition = "all 0.5s ease";    
+
+    
     document.getElementById('searchwarning').style.transform = "translateX(calc(100vw))"; 
 document.getElementById('searchwarning').style.transition = "all 0.5s ease";  
     $("#myInput").val("").trigger("keyup");
@@ -755,12 +768,11 @@ function help() {
           
           
           #sortablewindow{
-              height: 50%;
-              overflow-y: scroll;
+              height: auto;
               position: absolute;
-              bottom: 0;
+              top: 50%;
               left: 0;
-              width: 100%;
+              width: 800%;
           }
           
           #sortablevi1 li .title p:after, #sortablevi2 li .title p:after{
@@ -879,7 +891,17 @@ function help() {
               max-width: 100%;
           }
 }    
+    @media print{
     
+    * {
+     visibility: hidden;
+     margin:0; padding:0;
+    }
+
+    #modal2 * {
+      visibility: visible;
+    }
+    }
 </style>    
     
     
@@ -962,7 +984,9 @@ function help() {
     
     <div id="modal2">
                 <p onclick="modalhide2()" style="color: #fff; text-align: center; margin-top: 10px; cursor: pointer; font-size: 20px; position: absolute; bottom: 20px; right: 0; left: 0"><span style="background: #000; border-radius: 20px;padding: 5px 10px; color: #fff;">CLOSE</span></p>
-        
+<button onClick="window.print()">Print this page</button>
+
+
         <div class="w3-row w3-center" style="border-radius: 20xp;padding: 0; background: #f5f5f5">
   
             
@@ -1089,7 +1113,7 @@ $(document).ready(function(){
 
     
 <div style="position: fixed; bottom: 100px; right: 10px; z-index: 100">            
-<i id="searchbutton" onclick="print()" class="fa fa-print" style="color: #fff; padding: 10px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>   
+<i id="printbutton" onclick="print()" class="fa fa-print" style="color: #fff; padding: 10px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>   
     
 <div style="position: fixed; bottom: 20px; right: 10px; z-index: 100">            
 <i id="searchbutton" onclick="search()" class="fa fa-search" style="color: #fff; padding: 10px; border-radius: 50%; background: #666; z-index: 100; opacity: 0.8; cursor: pointer"></i></div>
