@@ -21,7 +21,7 @@ animation: none !important;
 }
 
 
-*, :before, :after {
+:before, :after {
  /*CSS transitions*/
  transition-property: none !important;
  /*CSS transforms*/
@@ -29,3 +29,10 @@ animation: none !important;
  /*CSS animations*/
  animation: none !important;
  }
+
+.disable-css-transitions {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
