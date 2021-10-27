@@ -1,7 +1,4 @@
 
-<html>
-<head>
-
 * {
 /*CSS transitions*/
 -o-transition-property: none !important;
@@ -32,5 +29,3 @@ animation: none !important;
  /*CSS animations*/
  animation: none !important;
  }
-</head>
-</html>
